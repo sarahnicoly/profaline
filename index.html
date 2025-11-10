@@ -1,1 +1,201 @@
+<html lang="pt-BR">
+<cabeça>
+<meta charset="UTF-8">
+<meta name="viewport" content="largura=largura-do-dispositivo, escala-inicial=1.0">
+<title>O Mundo dos Dinossauros</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
 
+<body>
+
+    <div id="login-modal" class="login-modal-overlay">
+        <div class="login-box">
+            <span class="close-button" onclick="closeLoginModal()">&times;</span>
+            
+            <div id="login-form-container">
+                <h2 class="text-3xl font-bold mb-6 text-center text-white">Login</h2>
+                <form id="login-form">
+                    <input id="user-name-input" type="text" placeholder="Nome" class="login-input" required>
+                    <input id="user-email-input" type="email" placeholder="Email" class="login-input" required>
+                    <input id="user-password-input" type="password" placeholder="Senha" class="login-input" required>
+                    <div id="login-error-message" class="error-message hidden"></div>
+                    <button type="submit" class="w-full py-3 rounded-lg font-bold login-button">Entrar</button>
+                </form>
+                <a href="#" id="forgot-password-link" class="optional-link">Esqueci a senha?</a>
+            </div>
+
+            <div id="reset-password-container" class="hidden">
+                 <h2 class="text-3xl font-bold mb-6 text-center text-white">Redefinir Senha</h2>
+                 <form id="reset-password-form">
+                    <p class="text-center text-gray-400 mb-4">Digite seu email para enviarmos um link de redefinição.</p>
+                    <input type="email" placeholder="Email" class="login-input" required>
+                    <button type="submit" class="w-full py-3 rounded-lg font-bold login-button">Enviar Link</button>
+                 </form>
+                 <a href="#" id="back-to-login-link" class="optional-link">Voltar ao Login</a>
+            </div>
+
+        </div>
+    </div>
+
+    <header class="page-header flex items-center justify-between px-6 py-3 rounded-b-lg shadow-lg">
+        <div class="flex items-center gap-4">
+            <img src="https://placehold.co/80x80/533483/FFFFFF?text=Dino" alt="Logo Dinossauros" class="rounded-full">
+            <h1 class="text-4xl font-bold">O Mundo dos Dinossauros</h1>
+        </div>
+        <div id="user-section">
+            <button id="login-button-header" class="login-button py-2 px-5 rounded-md font-semibold" onclick="showLoginModal()">Login</button>
+            <div id="user-profile" class="hidden items-center gap-3">
+                <img src="https://placehold.co/50x50/3ddc84/1f1f1f?text=User" alt="Imagem do Usuário" class="rounded-full">
+                <span id="user-name-display" class="font-semibold text-lg"></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="banner-carousel-section flex flex-col items-center justify-center py-10">
+        <p class="text-white text-center text-xl font-semibold mb-4 bg-black bg-opacity-50 px-4 py-2 rounded-lg">Clique na imagem para ir para a seção!</p>
+        <div class="carousel-container mt-4">
+            <img src="tiranossauro rex.jpg" alt="Tiranossauro Rex" class="carousel-item" onclick="scrollToSection('tiranossauro-rex')">
+            <img src="triceratops.jpg" alt="Triceratops" class="carousel-item" onclick="scrollToSection('triceratops')">
+            <img src="estegossauro.jpg" alt="Estegossauro" class="carousel-item" onclick="scrollToSection('estegossauro')">
+            <img src="velociraptor.jpg" alt="Velociraptor" class="carousel-item" onclick="scrollToSection('velociraptor')">
+            <img src="diplodoco.jpg" alt="Diplodoco" class="carousel-item" onclick="scrollToSection('diplodoco')">
+        </div>
+    </div>
+
+    <main class="main-content mx-auto my-5 p-5 rounded-xl shadow-xl max-w-4xl">
+        <h2 class="text-3xl font-bold text-gray-200 mb-4">Sobre os Dinossauros</h2>
+        <p class="mb-6 text-gray-400">
+            Os dinossauros foram animais que dominaram a Terra por milhões de anos.
+        </p>
+        <h3 class="text-2xl font-semibold text-gray-200 mb-4">Algumas espécies famosas:</h3>
+        <div id="tiranossauro-rex" class="mb-8 p-4 rounded-lg bg-gray-900">
+             <img src="tiranossauro rex.jpg" alt="Imagem do Tiranossauro Rex" class="dino-image rounded-lg">
+             <h4 class="text-xl font-bold mt-4 mb-2 text-white">Tiranossauro Rex</h4>
+             <p class="text-gray-400">O Tiranossauro rex foi um dinossauro carnívoro que viveu no final do período Cretáceo...</p>
+        </div>
+        <div id="triceratops" class="mb-8 p-4 rounded-lg bg-gray-900">
+             <img src="triceratops.jpg" alt="Imagem do Triceratops" class="dino-image rounded-lg">
+             <h4 class="text-xl font-bold mt-4 mb-2 text-white">Triceratops</h4>
+             <p class="text-gray-400">O Triceratops foi um grande dinossauro herbívoro do final do período Cretáceo...</p>
+        </div>
+        <div id="estegossauro" class="mb-8 p-4 rounded-lg bg-gray-900">
+             <img src="estegossauro.jpg" alt="Imagem do Estegossauro" class="dino-image rounded-lg">
+             <h4 class="text-xl font-bold mt-4 mb-2 text-white">Estegossauro</h4>
+             <p class="text-gray-400">O estegossauro foi um grande dinossauro herbívoro do período Jurássico Superior...</p>
+        </div>
+        <div id="velociraptor" class="mb-8 p-4 rounded-lg bg-gray-900">
+             <img src="velociraptor.jpg" alt="Imagem do Velociraptor" class="dino-image rounded-lg">
+             <h4 class="text-xl font-bold mt-4 mb-2 text-white">Velociraptor</h4>
+             <p class="text-gray-400">O Velociraptor era um predador ágil e carnívoro que viveu no final do período Cretáceo...</p>
+        </div>
+        <div id="diplodoco" class="mb-8 p-4 rounded-lg bg-gray-900">
+             <img src="diplodoco.jpg" alt="Imagem do Diplodoco" class="dino-image rounded-lg">
+             <h4 class="text-xl font-bold mt-4 mb-2 text-white">Diplodoco</h4>
+             <p class="text-gray-400">O Diplodoco foi um grande dinossauro herbívoro do período Jurássico Superior...</p>
+        </div>
+    </main>
+    
+    <footer class="bg-gray-900 text-white text-center py-3 rounded-t-lg shadow-inner mt-5">
+        <p class="text-sm">Contato: sarah2008ti@gmail.com</p>
+        <p class="text-sm mt-1">© 2024 - O Mundo dos Dinossauros</p>
+    </footer>
+
+    <script>
+        // --- ELEMENTOS DO DOM ---
+        const loginModal = document.getElementById('login-modal');
+        const loginFormContainer = document.getElementById('login-form-container');
+        const resetPasswordContainer = document.getElementById('reset-password-container');
+        const loginForm = document.getElementById('login-form');
+        const resetPasswordForm = document.getElementById('reset-password-form');
+        const loginErrorMessage = document.getElementById('login-error-message');
+        
+        const forgotPasswordLink = document.getElementById('forgot-password-link');
+        const backToLoginLink = document.getElementById('back-to-login-link');
+
+        const emailInput = document.getElementById('user-email-input');
+        const passwordInput = document.getElementById('user-password-input');
+
+        // --- FUNÇÕES DO MODAL E NAVEGAÇÃO ---
+        function showLoginModal() {
+            loginModal.style.display = 'flex';
+            // Garante que o form de login seja sempre o primeiro a ser mostrado
+            loginFormContainer.classList.remove('hidden');
+            resetPasswordContainer.classList.add('hidden');
+            loginErrorMessage.classList.add('hidden'); // Esconde erros antigos
+        }
+
+        function closeLoginModal() {
+            loginModal.style.display = 'none';
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // --- LÓGICA DE LOGIN E REDEFINIÇÃO DE SENHA ---
+
+        // Troca para a tela de "Esqueci a senha"
+        forgotPasswordLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginFormContainer.classList.add('hidden');
+            resetPasswordContainer.classList.remove('hidden');
+        });
+        
+        // Volta para a tela de login
+        backToLoginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            resetPasswordContainer.classList.add('hidden');
+            loginFormContainer.classList.remove('hidden');
+        });
+
+        // Simulação de Login
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // --- DADOS SIMULADOS DE UM USUÁRIO CORRETO ---
+            const correctEmail = 'sarah2008ti@gmail.com';
+            const correctPassword = '12345';
+            
+            const enteredEmail = emailInput.value;
+            const enteredPassword = passwordInput.value;
+            const userName = document.getElementById('user-name-input').value;
+
+            // Validação: verifica se os dados batem com o usuário simulado
+            if (enteredEmail === correctEmail && enteredPassword === correctPassword) {
+                // Se o login for bem-sucedido
+                document.getElementById('login-button-header').classList.add('hidden');
+                
+                const userProfile = document.getElementById('user-profile');
+                document.getElementById('user-name-display').textContent = userName;
+                userProfile.classList.remove('hidden');
+                userProfile.classList.add('flex');
+
+                closeLoginModal();
+                loginForm.reset(); // Limpa o formulário
+                loginErrorMessage.classList.add('hidden');
+            } else {
+                // Se o login falhar
+                loginErrorMessage.textContent = 'Senha ou email incorretos.';
+                loginErrorMessage.classList.remove('hidden');
+            }
+        });
+
+        // Simulação de envio de link para redefinir senha
+        resetPasswordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Se este email estiver cadastrado, um link de redefinição foi enviado para você.');
+            // Volta para a tela de login após a mensagem
+            backToLoginLink.click();
+            resetPasswordForm.reset();
+        });
+
+        // Esconde a mensagem de erro quando o usuário começa a digitar novamente
+        emailInput.addEventListener('input', () => loginErrorMessage.classList.add('hidden'));
+        passwordInput.addEventListener('input', () => loginErrorMessage.classList.add('hidden'));
+    </script>
+</body>
+
+</html>
